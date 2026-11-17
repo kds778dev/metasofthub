@@ -1,27 +1,1111 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>웹사이트 오픈 준비중</title>
-    <style>
-        body {
-            background-color: #0b132b;
-            color: #d4af37;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>METASOFTHUB | Hyper LP Project — 기술과 유동성, 디지털 서비스를 연결하다</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #050a18;
+      --bg-card: #0b142c;
+      --accent-cyan: #00e5ff;
+      --accent-blue: #2979ff;
+      --accent-gold: #f5c451;
+    }
+    body {
+      background-color: var(--bg-dark);
+      color: #e2e8f0;
+      font-family: 'Noto Sans KR', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-tech {
+      font-family: 'Orbitron', sans-serif;
+    }
+    .glass-panel {
+      background: rgba(11, 20, 44, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(0, 229, 255, 0.16);
+      box-shadow: 0 12px 38px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .glass-panel:hover {
+      border-color: rgba(0, 229, 255, 0.45);
+      transform: translateY(-2px);
+    }
+    .cyber-grid {
+      background-image: 
+        linear-gradient(to right, rgba(0, 229, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 229, 255, 0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .glow-text-cyan {
+      text-shadow: 0 0 28px rgba(0, 229, 255, 0.45);
+    }
+    .img-zoom {
+      transition: transform 0.5s ease;
+    }
+    .group:hover .img-zoom {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-<body>
-    <div>
-        <h1>새로운 웹사이트가 곧 오픈합니다</h1>
-        <p>도메인 및 서버 연결 테스트 중입니다.</p>
+<body class="cyber-grid antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- 상단 고정 내비게이션 -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#050a18]/90 backdrop-blur-md border-b border-cyan-500/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- 브랜드 로고 -->
+      <a href="#top" class="flex items-center gap-3 group">
+        <img src="Page01_Img1_476x505.png" alt="HYPER Logo" class="w-10 h-10 object-contain rounded-lg" onerror="this.style.display='none'" />
+        <div>
+          <span class="font-tech font-bold text-lg tracking-wider text-white block leading-none">METASOFTHUB</span>
+          <span class="text-[11px] font-tech tracking-widest text-cyan-400">HYPER LP PROJECT</span>
+        </div>
+      </a>
+
+      <!-- 데스크탑 카테고리 메뉴 -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#company" class="hover:text-cyan-400 transition">회사 소개</a>
+        <a href="#portfolio" class="hover:text-cyan-400 transition">사업 포트폴리오</a>
+        <a href="#hyper-lp" class="hover:text-cyan-400 transition">Hyper LP 구조</a>
+        <a href="#participation" class="hover:text-cyan-400 transition">참여 방식</a>
+        <a href="#rewards" class="hover:text-cyan-400 transition">보상 체계</a>
+        <a href="#disclaimer" class="hover:text-amber-400 transition">유의사항</a>
+      </nav>
+
+      <!-- 우측 CTA & 모바일 메뉴 버튼 -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 hover:from-cyan-400 hover:to-blue-500 transition shadow-lg shadow-cyan-500/25">
+          CONTACT
+        </a>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800" aria-label="메뉴 열기">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- 모바일 드롭다운 메뉴 -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-[#081026] border-b border-cyan-500/20 px-6 py-4 space-y-3 text-sm">
+      <a href="#company" class="block py-1.5 text-slate-200 hover:text-cyan-400">01. 회사 소개 (COMPANY)</a>
+      <a href="#portfolio" class="block py-1.5 text-slate-200 hover:text-cyan-400">02. 사업 포트폴리오 (PORTFOLIO)</a>
+      <a href="#hyper-lp" class="block py-1.5 text-slate-200 hover:text-cyan-400">03. Hyper LP 구조 (STRUCTURE)</a>
+      <a href="#participation" class="block py-1.5 text-slate-200 hover:text-cyan-400">04. 참여 방식 (PARTICIPATION)</a>
+      <a href="#rewards" class="block py-1.5 text-slate-200 hover:text-cyan-400">05. 보상 체계 (REWARDS)</a>
+      <a href="#disclaimer" class="block py-1.5 text-amber-400">투자 유의사항 (DISCLAIMER)</a>
+    </div>
+  </header>
+
+  <!-- HERO 메인 섹션 -->
+  <section id="top" class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
+    <!-- 배경 이미지 오버레이 -->
+    <div class="absolute inset-0 z-0 opacity-25">
+      <img src="Page01_Img2_1672x941.jpg" alt="Hyper LP Background" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-[#050a18] via-[#050a18]/70 to-[#050a18]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- 좌측 텍스트 영역 -->
+        <div class="lg:col-span-7 text-left">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-tech tracking-widest mb-6">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            METASOFTHUB LIMITED · HONG KONG
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6">
+            기술과 유동성,<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-400 to-amber-300 glow-text-cyan">
+              디지털 서비스를 연결하다
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
+            홍콩에서 출발한 블록체인·핀테크 기술 기업 <strong class="text-white">METASOFTHUB</strong>는 지갑·거래소·AI 트레이딩·게임·커머스까지 10개 핵심 플랫폼을 자체 개발하고, 그 위에 유동성 생태계 <strong class="text-cyan-400">Hyper LP</strong>를 설계했습니다.
+          </p>
+
+          <!-- 생태계 4대 연결 축 -->
+          <div class="flex flex-wrap gap-2.5 text-xs font-semibold mb-10">
+            <span class="px-3.5 py-2 rounded-lg bg-slate-900/90 border border-cyan-500/40 text-cyan-300">DEX 탈중앙화 거래</span>
+            <span class="px-3.5 py-2 rounded-lg bg-slate-900/90 border border-blue-500/40 text-blue-300">CEX 중앙화 거래</span>
+            <span class="px-3.5 py-2 rounded-lg bg-slate-900/90 border border-amber-500/40 text-amber-300">FX 외환 연계</span>
+            <span class="px-3.5 py-2 rounded-lg bg-slate-900/90 border border-rose-500/40 text-rose-300">GAME 게임·카지노</span>
+          </div>
+
+          <!-- 핵심 지표 4개 -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+            <div class="glass-panel rounded-xl p-4">
+              <div class="font-tech text-2xl font-black text-cyan-400">2022</div>
+              <div class="text-xs text-slate-400 mt-0.5">홍콩 법인 설립</div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+              <div class="font-tech text-2xl font-black text-white">10개</div>
+              <div class="text-xs text-slate-400 mt-0.5">자체 개발 플랫폼</div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+              <div class="font-tech text-2xl font-black text-amber-400">4개</div>
+              <div class="text-xs text-slate-400 mt-0.5">핵심 LP 사업 영역</div>
+            </div>
+            <div class="glass-panel rounded-xl p-4">
+              <div class="font-tech text-2xl font-black text-cyan-300">2가지</div>
+              <div class="text-xs text-slate-400 mt-0.5">토큰 & 노드 참여</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측 3D 스택 메인 비주얼 -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl shadow-cyan-500/20 max-w-md w-full">
+            <img src="Page01_Img3_1040x1300.jpg" alt="HYPER Ecosystem Stack" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 01: 회사 소개 (COMPANY) -->
+  <section id="company" class="py-24 border-t border-slate-800/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <span class="font-tech text-xs tracking-widest text-cyan-400 uppercase">CHAPTER 01 · COMPANY</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">플랫폼을 직접 만드는 블록체인·핀테크 기업</h2>
+        <p class="text-slate-400 mt-3 max-w-3xl">
+          홍콩에서 출발한 METASOFTHUB는 디지털 자산의 보관·거래·활용을 잇는 플랫폼을 직접 개발하고, 그 위에 Hyper LP를 설계했습니다.
+        </p>
+      </div>
+
+      <!-- 기업 개요 & 홍콩 본사 이미지 -->
+      <div class="grid lg:grid-cols-12 gap-8 mb-14 items-stretch">
+        <!-- 좌측 홍콩 HQ 비주얼 -->
+        <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-cyan-500/25 min-h-[380px]">
+          <img src="Page04_Img3_1254x1254.jpg" alt="METASOFTHUB Hong Kong HQ" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#050a18] via-transparent to-transparent"></div>
+          <div class="absolute bottom-5 left-5 right-5">
+            <span class="px-3 py-1 rounded bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 font-tech text-xs">HONG KONG SAR HQ</span>
+            <p class="text-white font-bold text-lg mt-2">METASOFTHUB LIMITED</p>
+            <p class="text-xs text-slate-300">자체 플랫폼 개발 + 유동성 풀(LP) 비즈니스 연결</p>
+          </div>
+        </div>
+
+        <!-- 우측 법인 개요 및 증명서 정보 -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl p-8 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-tech text-amber-400 tracking-wider mb-2">COMPANY OVERVIEW</div>
+            <h3 class="text-2xl font-bold text-white mb-4">플랫폼을 만들고, 사업 간 연결을 설계합니다</h3>
+            <p class="text-sm text-slate-300 leading-relaxed mb-6">
+              METASOFTHUB는 홍콩에 설립된 기술 기업으로, 지갑·거래소·유동성 풀·트레이딩·게임·커머스까지 디지털 자산 서비스 전반을 자체 개발해 왔습니다. Hyper LP는 이 개발 역량과 회사가 운영하는 유동성 풀을 연결하는 핵심 사업입니다.
+            </p>
+
+            <dl class="grid sm:grid-cols-2 gap-4 text-sm bg-slate-950/60 p-5 rounded-xl border border-slate-800">
+              <div>
+                <dt class="text-xs text-slate-400">법인명</dt>
+                <dd class="font-bold text-white mt-0.5">METASOFTHUB LIMITED</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">소재지</dt>
+                <dd class="font-bold text-white mt-0.5">Hong Kong SAR</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">법인 설립일</dt>
+                <dd class="font-semibold text-slate-200 mt-0.5">2022년 6월 6일 (舊 LIFEONE LIMITED)</dd>
+              </div>
+              <div>
+                <dt class="text-xs text-slate-400">상호 변경일</dt>
+                <dd class="font-semibold text-cyan-300 mt-0.5">2024년 4월 30일</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- 홍콩 회사등록처 공식 증명서 요약 -->
+          <div class="mt-6 pt-6 border-t border-slate-800">
+            <div class="text-xs font-tech text-amber-400 mb-3">HONG KONG COMPANIES REGISTRY (홍콩 회사등록처 등록 법인)</div>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-amber-500/30 flex items-center gap-3">
+                <span class="font-tech font-black text-amber-400 text-lg">01</span>
+                <div>
+                  <div class="text-xs font-bold text-white">법인설립증명서 (Certificate of Incorporation)</div>
+                  <div class="text-[11px] text-slate-400">LIFEONE LIMITED · 2022년 6월 6일 발급</div>
+                </div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/90 border border-cyan-500/30 flex items-center gap-3">
+                <span class="font-tech font-black text-cyan-400 text-lg">02</span>
+                <div>
+                  <div class="text-xs font-bold text-white">상호변경증명서 (Certificate of Change of Name)</div>
+                  <div class="text-[11px] text-slate-400">METASOFTHUB LIMITED · 2024년 4월 30일 발급</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 미션·비전 & 3대 핵심 가치 (이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8 mb-12">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <span class="font-tech text-xs text-cyan-400 tracking-wider">MISSION & VISION</span>
+          <h3 class="text-2xl font-bold text-white mt-1">Hyper 인프라를 통한 회원의 지속적인 가치 창출</h3>
+          <p class="text-xs sm:text-sm text-slate-400 mt-2">
+            지갑·거래·FX·게임·커머스를 하나의 Hyper 인프라로 연결하고, 유동성 풀에서 발생한 수익을 정해진 규칙에 따라 참여자와 나눕니다.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden group">
+            <div class="h-48 overflow-hidden">
+              <img src="Page05_Img2_560x560.jpg" alt="자체 기술력" class="w-full h-full object-cover img-zoom" />
+            </div>
+            <div class="p-5">
+              <span class="font-tech text-xs text-cyan-400 font-bold">VALUE 01</span>
+              <h4 class="font-bold text-white text-lg mt-1 mb-2">자체 기술력</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">지갑부터 거래소, AI 트레이딩봇까지 핵심 시스템을 직접 개발·운영합니다.</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden group">
+            <div class="h-48 overflow-hidden">
+              <img src="Page05_Img3_560x560.jpg" alt="연결된 생태계" class="w-full h-full object-cover img-zoom" />
+            </div>
+            <div class="p-5">
+              <span class="font-tech text-xs text-blue-400 font-bold">VALUE 02</span>
+              <h4 class="font-bold text-white text-lg mt-1 mb-2">연결된 생태계</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">거래소·FX·게임·커머스 플랫폼이 하나의 Hyper 인프라로 긴밀히 연결됩니다.</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden group">
+            <div class="h-48 overflow-hidden">
+              <img src="Page05_Img4_560x560.jpg" alt="투명한 분배" class="w-full h-full object-cover img-zoom" />
+            </div>
+            <div class="p-5">
+              <span class="font-tech text-xs text-amber-400 font-bold">VALUE 03</span>
+              <h4 class="font-bold text-white text-lg mt-1 mb-2">투명한 분배</h4>
+              <p class="text-xs text-slate-400 leading-relaxed">유동성 풀에서 발생한 수익을 정해진 규칙에 따라 참여자에게 분배합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 연혁 4단계 (이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8">
+        <div class="text-xs font-tech text-cyan-400 tracking-wider mb-6">CORPORATE HISTORY · 홍콩 법인에서 Hyper LP까지</div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page06_Img2_1300x867.jpg" alt="2022.06.06 LIFEONE 설립" class="w-full h-36 object-cover" />
+            <div class="p-4">
+              <div class="font-tech text-xs text-cyan-400 font-bold">2022.06.06</div>
+              <div class="text-sm font-bold text-white mt-1">LIFEONE LIMITED 설립</div>
+              <p class="text-xs text-slate-400 mt-1">홍콩 회사조례(Cap. 622)에 따라 홍콩 법인을 설립했습니다.</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page06_Img3_1300x867.jpg" alt="2022-2024 핵심 플랫폼 자체 개발" class="w-full h-36 object-cover" />
+            <div class="p-4">
+              <div class="font-tech text-xs text-blue-400 font-bold">2022 — 2024</div>
+              <div class="text-sm font-bold text-white mt-1">핵심 플랫폼 자체 개발</div>
+              <p class="text-xs text-slate-400 mt-1">지갑·카지노·게임·쇼핑몰·FX·거래소·AI 트레이딩봇·MM 시스템을 개발했습니다.</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page06_Img4_1300x867.jpg" alt="2024.04.30 METASOFTHUB 상호 변경" class="w-full h-36 object-cover" />
+            <div class="p-4">
+              <div class="font-tech text-xs text-amber-400 font-bold">2024.04.30</div>
+              <div class="text-sm font-bold text-white mt-1">METASOFTHUB 상호 변경</div>
+              <p class="text-xs text-slate-400 mt-1">홍콩 회사등록처(Companies Registry)에 법인명 변경을 완료했습니다.</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page06_Img5_1300x867.jpg" alt="Hyper LP 출범" class="w-full h-36 object-cover" />
+            <div class="p-4">
+              <div class="font-tech text-xs text-rose-400 font-bold">NEXT</div>
+              <div class="text-sm font-bold text-white mt-1">Hyper LP 출범</div>
+              <p class="text-xs text-slate-400 mt-1">유동성 풀·마켓메이킹·노드 풀 기반의 Hyper LP 서비스를 시작합니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 02: 사업 포트폴리오 (BUSINESS PORTFOLIO) -->
+  <section id="portfolio" class="py-24 bg-[#070e22]/70 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-tech text-xs tracking-widest text-cyan-400 uppercase">CHAPTER 02 · BUSINESS PORTFOLIO</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">자체 개발 10개 플랫폼, 4개 사업 영역</h2>
+          <p class="text-slate-400 mt-3 max-w-2xl">
+            자산의 접점부터 거래·운영 기술까지, 모든 제품은 HYPER 브랜드 아래 하나의 생태계로 연결됩니다.
+          </p>
+        </div>
+
+        <!-- 영역 필터 버튼 -->
+        <div class="flex flex-wrap gap-2" id="portfolioFilters">
+          <button data-filter="all" class="filter-btn active px-4 py-2 rounded-lg text-xs font-bold bg-cyan-500 text-slate-950 transition">전체 (10)</button>
+          <button data-filter="infra" class="filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">블록체인 인프라 (4)</button>
+          <button data-filter="fx" class="filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">트레이딩·FX (3)</button>
+          <button data-filter="ent" class="filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">엔터테인먼트 (2)</button>
+          <button data-filter="commerce" class="filter-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 transition">커머스 (1)</button>
+        </div>
+      </div>
+
+      <!-- 10개 플랫폼 그리드 (고해상도 일러스트 포함) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="portfolioGrid">
+        <!-- 01 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="infra">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page10_Img3_1254x1254.jpg" alt="HYPER Wallet" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-cyan-500/40 text-cyan-400 font-bold">01 · BLOCKCHAIN INFRA</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER Wallet <span class="text-xs font-normal text-slate-400">· META Wallet</span></h3>
+            <p class="text-xs text-slate-300 mb-3">Hyper 생태계의 모든 자산이 드나드는 멀티체인 디지털 자산 지갑</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 멀티체인 코인·토큰 통합 보관·송금·수신</li>
+              <li>• 개인 키 기반 자산 통제 및 거래 서명 검증</li>
+              <li>• 거래소·LP·게임·쇼핑몰 결제 연동 단일 계정</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-cyan-300">
+              <strong>Hyper LP 연계:</strong> LP 예치·보상 수령·출금의 기본 창구
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="infra">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page10_Img7_1254x1254.jpg" alt="HYPER Exchange" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-cyan-500/40 text-cyan-400 font-bold">02 · BLOCKCHAIN INFRA</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER Exchange <span class="text-xs font-normal text-slate-400">· Spot / Futures</span></h3>
+            <p class="text-xs text-slate-300 mb-3">현물과 선물을 한 곳에서 지원하는 자체 개발 디지털 자산 거래소</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 주문장 기반 매칭 엔진으로 실시간 호가 체결</li>
+              <li>• 레버리지 포지션, 증거금·청산 관리 체계</li>
+              <li>• 상장·입출금·리스크 관리를 위한 관리자 도구</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-cyan-300">
+              <strong>Hyper LP 연계:</strong> 거래 수수료가 CEX 유동성 풀의 수익원
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="infra">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page11_Img2_1254x1254.jpg" alt="HYPER LP Platform" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-cyan-500/40 text-cyan-400 font-bold">03 · BLOCKCHAIN INFRA</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER LP Platform</h3>
+            <p class="text-xs text-slate-300 mb-3">Hyper LP의 심장 — 유동성의 공급, 이용, 정산을 하나로 연결</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 분야별 참여 대상과 자금 현황을 구분해 표시</li>
+              <li>• DEX·CEX·FX·게임 유동성 풀을 단일 플랫폼에서 운영</li>
+              <li>• 발생한 수익을 정해진 규칙에 따라 산정 및 분배</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-cyan-300">
+              <strong>Hyper LP 연계:</strong> Hyper LP 서비스 전체의 운영 기반
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="infra">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page11_Img6_1254x1254.jpg" alt="HYPER MM Solution" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-cyan-500/40 text-cyan-400 font-bold">04 · BLOCKCHAIN INFRA</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER MM Solution</h3>
+            <p class="text-xs text-slate-300 mb-3">매수·매도 호가를 상시 공급해 거래가 이어지게 하는 마켓메이킹 기술</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 언제든 사고팔 수 있도록 매수·매도 양쪽 유동성 공급</li>
+              <li>• 급등·급락을 완화해 시장 변동성을 안정화</li>
+              <li>• 매수·매도 가격 차이(스프레드)를 적정 수준 유지</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-cyan-300">
+              <strong>Hyper LP 연계:</strong> 거래 수수료와 스프레드 수익으로 LP 수익 기여
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="fx">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page12_Img1_1254x1254.jpg" alt="HYPER FX Broker" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-blue-500/40 text-blue-400 font-bold">05 · TRADING & FX</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER FX Broker</h3>
+            <p class="text-xs text-slate-300 mb-3">외환 마진 거래를 위한 전문 브로커 플랫폼</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 글로벌 거래자 계정 개설 및 통합 관리</li>
+              <li>• 글로벌 표준 트레이딩 플랫폼 MT4 / MT5 연동</li>
+              <li>• 소개 브로커(IB) 및 파트너 정산 관리 시스템</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-blue-300">
+              <strong>Hyper LP 연계:</strong> FX 유동성 풀의 거래 및 기술 기반
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="fx">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page12_Img5_1254x1254.jpg" alt="HYPER FX One Click" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-blue-500/40 text-blue-400 font-bold">06 · TRADING & FX</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER FX One Click</h3>
+            <p class="text-xs text-slate-300 mb-3">복잡한 FX 주문을 단 한 번의 클릭으로 실행</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 반복 조작을 줄인 간결한 원클릭 주문 실행</li>
+              <li>• 모바일 최적화로 시세·포지션을 한 화면에서 확인</li>
+              <li>• 권한·한도·주문 조건 설정을 통한 리스크 통제</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-blue-300">
+              <strong>Hyper LP 연계:</strong> FX 풀 유동성 회전율 향상 기여
+            </div>
+          </div>
+        </div>
+
+        <!-- 07 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="fx">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page12_Img9_1254x1254.jpg" alt="HYPER AI Trading Bot" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-blue-500/40 text-blue-400 font-bold">07 · TRADING & FX</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER AI Trading Bot</h3>
+            <p class="text-xs text-slate-300 mb-3">Google Gemini 기반 AI 분석과 MT4·MT5 24시간 자동매매</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• Gemini AI를 활용한 실시간 시장 데이터 분석</li>
+              <li>• MT4·MT5 기반 24시간 무중단 자동 주문 실행</li>
+              <li>• 검증 규칙·권한·한도 분리 설계로 안전성 확보</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-blue-300">
+              <strong>Hyper LP 연계:</strong> AI 자동매매 기반 FX 유동성 풀 운용
+            </div>
+          </div>
+        </div>
+
+        <!-- 08 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="ent">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page13_Img2_1254x1254.jpg" alt="HYPER Casino" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-rose-500/40 text-rose-400 font-bold">08 · ENTERTAINMENT</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER Casino</h3>
+            <p class="text-xs text-slate-300 mb-3">크립토 기반 온라인 카지노 플랫폼</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• 테이블·슬롯 등 다채로운 게임 콘텐츠 구성</li>
+              <li>• Hyper 코인으로 빠르고 투명한 입·출금 결제</li>
+              <li>• 회원·이용 내역·수익 정산 통합 관리 시스템</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-rose-300">
+              <strong>Hyper LP 연계:</strong> 게임 유동성 풀(GAME LP) 수익 창출원
+            </div>
+          </div>
+        </div>
+
+        <!-- 09 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden group" data-category="ent">
+          <div class="h-52 overflow-hidden relative">
+            <img src="Page13_Img6_1254x1254.jpg" alt="HYPER Game P2E T2E" class="w-full h-full object-cover img-zoom" />
+            <span class="absolute top-3 left-3 font-tech text-[11px] px-2.5 py-1 rounded bg-slate-950/85 border border-rose-500/40 text-rose-400 font-bold">09 · ENTERTAINMENT</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-1">HYPER Game <span class="text-xs font-normal text-slate-400">· P2E / T2E</span></h3>
+            <p class="text-xs text-slate-300 mb-3">플레이와 과업 참여를 보상으로 연결하는 온라인 게임 플랫폼</p>
+            <ul class="space-y-1 text-xs text-slate-400 mb-4">
+              <li>• P2E(Play to Earn): 플레이 참여와 보상 규칙 연결</li>
+              <li>• T2E(Tap to Earn): 간편 과업 수행 및 완료 확인</li>
+              <li>• 획득·사용 내역을 HYPER Wallet과 실시간 연동</li>
+            </ul>
+            <div class="pt-3 border-t border-slate-800 text-[11px] text-rose-300">
+              <strong>Hyper LP 연계:</strong> 게임 유동성 풀 및 코인 순환 생태계
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="portfolio-card glass-panel rounded-2xl overflow-hidden md:col-span-2 lg:col-span-3 group" data-category="commerce">
+          <div class="grid lg:grid-cols-12 items-center">
+            <div class="lg:col-span-4 h-56 lg:h-full overflow-hidden">
+              <img src="Page13_Img10_1254x1254.jpg" alt="HYPER Ecommerce" class="w-full h-full object-cover img-zoom" />
+            </div>
+            <div class="lg:col-span-8 p-6 sm:p-8">
+              <div class="flex items-center gap-3 mb-2">
+                <span class="font-tech text-xs px-2.5 py-1 rounded bg-amber-500/15 text-amber-400 font-bold">10 · COMMERCE</span>
+                <span class="text-xs text-slate-400">Coin Shopping Mall</span>
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-2">HYPER Ecommerce Solution</h3>
+              <p class="text-sm text-slate-300 mb-4">디지털 자산으로 쇼핑하는 커머스 플랫폼 — 결제 자산·금액·상태 확인부터 상품 탐색·주문·배송 관리, 판매자 정산까지 통합 지원합니다.</p>
+              <div class="inline-block px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200">
+                <strong>Hyper LP 연계:</strong> Hyper 코인의 핵심 실사용처(Utility) 구축
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-Layer 아키텍처 다이어그램 -->
+      <div class="glass-panel rounded-2xl p-8">
+        <div class="text-center mb-8">
+          <span class="font-tech text-xs text-cyan-400 tracking-widest">CONNECTED PORTFOLIO ARCHITECTURE</span>
+          <h3 class="text-2xl font-bold text-white mt-1">10개의 제품, 하나의 HYPER 3층 생태계</h3>
+        </div>
+        <div class="space-y-4">
+          <div class="p-5 rounded-xl bg-gradient-to-r from-cyan-950/60 to-slate-900 border border-cyan-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="font-tech text-xs font-bold text-cyan-400">LAYER 1 · EXPERIENCE</span>
+              <div class="text-base font-bold text-white">사용자 접점</div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-cyan-500/30 text-cyan-200">HYPER Wallet</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-cyan-500/30 text-cyan-200">FX One Click</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-cyan-500/30 text-cyan-200">서비스 대시보드</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="font-tech text-xs font-bold text-blue-400">LAYER 2 · SERVICES</span>
+              <div class="text-base font-bold text-white">거래와 사용처</div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-blue-500/30 text-blue-200">Exchange · FX Broker</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-blue-500/30 text-blue-200">Casino · Game</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-blue-500/30 text-blue-200">Ecommerce</span>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl bg-gradient-to-r from-rose-950/50 to-slate-900 border border-rose-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="font-tech text-xs font-bold text-rose-400">LAYER 3 · INFRASTRUCTURE</span>
+              <div class="text-base font-bold text-white">운영 기술</div>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-rose-500/30 text-rose-200">LP Platform</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-rose-500/30 text-rose-200">MM Solution</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-950 border border-rose-500/30 text-rose-200">AI Trading Bot</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 03: Hyper LP 구조 (HYPER LP STRUCTURE) -->
+  <section id="hyper-lp" class="py-24 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <span class="font-tech text-xs tracking-widest text-cyan-400 uppercase">CHAPTER 03 · HYPER LP STRUCTURE</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">회사가 운영하는 유동성 풀, Hyper LP</h2>
+        <p class="text-slate-400 mt-3 max-w-3xl">
+          거래에 필요한 유동성을 공급하고, 사업별 운영 결과를 정산 흐름으로 연결합니다.
+        </p>
+      </div>
+
+      <!-- 유동성 풀 작동 3단계 (이미지 포함) -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center mb-16">
+        <div class="lg:col-span-5">
+          <div class="rounded-2xl overflow-hidden border border-cyan-500/30 shadow-xl">
+            <img src="Page16_Img2_1254x1254.jpg" alt="Hyper LP Liquidity Pool" class="w-full h-auto object-cover" />
+          </div>
+        </div>
+        <div class="lg:col-span-7 space-y-5">
+          <div class="glass-panel rounded-2xl p-6">
+            <span class="font-tech text-xs text-cyan-400 font-bold">STEP 01 · 유동성 공급</span>
+            <h3 class="text-lg font-bold text-white mt-1">유동성 공급자(LP Provider)가 코인·토큰을 풀에 예치</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">거래를 가능하게 하는 자동 자금 풀(Automatic Funds Pool)에 자산을 공급하여 시장 유동성을 형성합니다.</p>
+          </div>
+          <div class="glass-panel rounded-2xl p-6">
+            <span class="font-tech text-xs text-blue-400 font-bold">STEP 02 · 거래 발생 및 수수료 적립 (0.3% ~ 1%)</span>
+            <h3 class="text-lg font-bold text-white mt-1">트레이더가 풀을 통해 교환하고 거래마다 수수료 발생</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">거래량이 늘어날수록 풀에 쌓이는 수수료(0.3%~1%) 수익 규모도 함께 커집니다.</p>
+          </div>
+          <div class="glass-panel rounded-2xl p-6">
+            <span class="font-tech text-xs text-amber-400 font-bold">STEP 03 · 수수료 보상 분배</span>
+            <h3 class="text-lg font-bold text-white mt-1">지분(LP Token) 및 수익 시스템에 따라 공급자에게 분배</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">적립된 수수료와 운용 순손익은 정해진 정산 규칙(Payment by Profit System)에 따라 LP 참여자에게 분배됩니다.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 마켓메이킹(MM) 역할 (이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8 mb-16">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-4">
+            <span class="font-tech text-xs text-amber-400 font-bold">MARKET MAKING (MM)</span>
+            <h3 class="text-2xl font-bold text-white">마켓메이킹의 3대 역할과 두 가지 수익원</h3>
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+                <strong class="text-cyan-400">ROLE 1 · 유동성 공급:</strong> 항상 사고팔 수 있도록 매수(BID)·매도(ASK) 양쪽에 호가를 공급합니다.
+              </div>
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+                <strong class="text-blue-400">ROLE 2 · 가격 안정화:</strong> 급등·급락을 완화해 변동성을 낮추고 시장 신뢰를 높입니다.
+              </div>
+              <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+                <strong class="text-amber-400">ROLE 3 · 스프레드 유지:</strong> 매수 가격과 매도 가격의 차이(스프레드)를 적정 수준으로 유지합니다.
+              </div>
+            </div>
+            <div class="p-4 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-slate-200">
+              <strong>MM 핵심 수익원:</strong> ① 거래 발생 시 수수료 수익 &nbsp;|&nbsp; ② 저가 매수·고가 매도 스프레드 차익 (글로벌 사례: Wintermute, Jump Trading, GSR, Amber Group)
+            </div>
+          </div>
+          <div class="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+            <img src="Page19_Img2_1300x867.jpg" alt="Hyper MM Orderbook" class="rounded-xl w-full h-56 object-cover border border-slate-700" />
+            <img src="Page19_Img3_1300x867.jpg" alt="BID ASK Spread" class="rounded-xl w-full h-56 object-cover border border-slate-700" />
+          </div>
+        </div>
+      </div>
+
+      <!-- 6대 인프라 로드맵 (이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8">
+        <span class="font-tech text-xs text-cyan-400 font-bold">HYPER INFRA ROADMAP</span>
+        <h3 class="text-2xl font-bold text-white mt-1 mb-6">거래 유동성에서 결제와 서비스 사용처로 — 여섯 가지 확장 방향</h3>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img2_1300x867.jpg" alt="HYPER DEX POOL" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-cyan-400 font-bold">01 · HYPER DEX POOL</span>
+              <h4 class="font-bold text-white text-sm mt-1">DEX 거래소 POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">Uniswap·PancakeSwap·Ston.fi 등 탈중앙화 거래소 유동성 공급</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img3_1300x867.jpg" alt="HYPER Casino POOL" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-rose-400 font-bold">02 · HYPER CASINO POOL</span>
+              <h4 class="font-bold text-white text-sm mt-1">카지노·게임 POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">온라인 카지노 및 게임 플랫폼의 유동성 운영</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img4_1300x867.jpg" alt="HYPER CEX POOL" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-blue-400 font-bold">03 · HYPER CEX POOL</span>
+              <h4 class="font-bold text-white text-sm mt-1">CEX 거래소 POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">중앙화 거래소의 호가 마켓메이킹 유동성 공급</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img5_1300x867.jpg" alt="HYPER CARD" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-amber-400 font-bold">04 · HYPER CARD</span>
+              <h4 class="font-bold text-white text-sm mt-1">HYPER Card (Visa · Master)</h4>
+              <p class="text-xs text-slate-400 mt-1">디지털 자산 기반 글로벌 카드 결제 연동</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img6_1300x867.jpg" alt="HYPER FX POOL" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-indigo-400 font-bold">05 · HYPER FX POOL</span>
+              <h4 class="font-bold text-white text-sm mt-1">FX 선물 POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">외환 선물·증거금 거래 유동성 공급</p>
+            </div>
+          </div>
+          <div class="rounded-xl bg-[#070d1f] border border-slate-800 overflow-hidden">
+            <img src="Page21_Img7_1300x867.jpg" alt="HYPER PAY" class="w-full h-40 object-cover" />
+            <div class="p-4">
+              <span class="font-tech text-xs text-emerald-400 font-bold">06 · HYPER PAY</span>
+              <h4 class="font-bold text-white text-sm mt-1">HYPER Pay 시스템</h4>
+              <p class="text-xs text-slate-400 mt-1">온·오프라인 결제로 Hyper 실사용처 확장</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 04: 참여 방식 (PARTICIPATION) -->
+  <section id="participation" class="py-24 bg-[#070e22]/70 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <span class="font-tech text-xs tracking-widest text-cyan-400 uppercase">CHAPTER 04 · PARTICIPATION</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">하나의 프로젝트, 두 가지 참여 방식</h2>
+        <p class="text-slate-400 mt-3 max-w-3xl">
+          토큰 자체투자와 사업 연계 노드 투자. 투자 대상이 다르므로 권리와 보상 구조도 구분해 안내합니다.
+        </p>
+      </div>
+
+      <!-- Track A vs Track B 비교 카드 (이미지 포함) -->
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-t-cyan-400">
+          <img src="Page23_Img3_1300x867.jpg" alt="Track A Token Pool" class="w-full h-52 object-cover" />
+          <div class="p-8">
+            <span class="font-tech text-xs px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">TRACK A · TOKEN</span>
+            <h3 class="text-2xl font-bold text-white mt-3 mb-2">토큰 자체투자</h3>
+            <p class="text-sm text-slate-300 mb-5">Hyper Pool 패키지에 직접 참여해 풀 보너스를 받는 방식</p>
+            <div class="space-y-2.5 text-sm bg-slate-950/60 p-5 rounded-xl border border-slate-800">
+              <div class="flex justify-between"><span class="text-slate-400">패키지</span><span class="font-bold text-white">$100 ~ $100,000 (8종)</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">풀 보너스</span><span class="font-bold text-cyan-400">0.5% ~ 1.0% 주 5일 지급</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">지급 방식</span><span class="font-bold text-amber-300">Hyper coin 80% : Hyper token 20%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl overflow-hidden border-t-4 border-t-amber-400">
+          <img src="Page23_Img4_1300x867.jpg" alt="Track B Node Pool" class="w-full h-52 object-cover" />
+          <div class="p-8">
+            <span class="font-tech text-xs px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 font-bold">TRACK B · NODE</span>
+            <h3 class="text-2xl font-bold text-white mt-3 mb-2">노드 투자</h3>
+            <p class="text-sm text-slate-300 mb-5">Hyper 연계 사업의 유동성 풀 노드를 분양받는 방식</p>
+            <div class="space-y-2.5 text-sm bg-slate-950/60 p-5 rounded-xl border border-slate-800">
+              <div class="flex justify-between"><span class="text-slate-400">노드 풀</span><span class="font-bold text-white">DEX · FX · Exchange · Game (4종)</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">수익 기반</span><span class="font-bold text-amber-400">연계 플랫폼의 거래 Volume</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">확인</span><span class="font-bold text-cyan-300">대시보드에서 일별 수익 누적 확인</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4개 노드 풀 카드 (이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8 mb-10">
+        <div class="mb-6">
+          <span class="font-tech text-xs text-amber-400 font-bold">NODE POOL · 4개 노드 풀 구성</span>
+          <h3 class="text-xl font-bold text-white mt-1">사업 영역별 유동성 풀 노드</h3>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          <div class="rounded-xl bg-[#060c1d] border border-cyan-500/30 overflow-hidden">
+            <img src="Page24_Img2_1254x1254.jpg" alt="NODE 01 Pancake DEX POOL" class="w-full h-44 object-cover" />
+            <div class="p-4">
+              <div class="flex justify-between items-center">
+                <span class="font-tech text-xs font-bold text-cyan-400">NODE 01</span>
+                <span class="font-tech text-lg font-black text-white">20%</span>
+              </div>
+              <h4 class="font-bold text-white mt-1">Pancake DEX POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">표기: PancakeSwap · DEX 유동성 공급</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#060c1d] border border-blue-500/30 overflow-hidden">
+            <img src="Page24_Img3_1254x1254.jpg" alt="NODE 02 FX Liquidity POOL" class="w-full h-44 object-cover" />
+            <div class="p-4">
+              <div class="flex justify-between items-center">
+                <span class="font-tech text-xs font-bold text-blue-400">NODE 02</span>
+                <span class="font-tech text-lg font-black text-white">30%</span>
+              </div>
+              <h4 class="font-bold text-white mt-1">FX Liquidity POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">표기: Innohedge · FX 브로커 유동성·헤지</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#060c1d] border border-indigo-500/30 overflow-hidden">
+            <img src="Page24_Img4_1254x1254.jpg" alt="NODE 03 Exchange Liquidity POOL" class="w-full h-44 object-cover" />
+            <div class="p-4">
+              <div class="flex justify-between items-center">
+                <span class="font-tech text-xs font-bold text-indigo-400">NODE 03</span>
+                <span class="font-tech text-lg font-black text-white">30%</span>
+              </div>
+              <h4 class="font-bold text-white mt-1">Exchange Liquidity POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">표기: TAPBIT · 중앙화 거래소 유동성 MM</p>
+            </div>
+          </div>
+
+          <div class="rounded-xl bg-[#060c1d] border border-rose-500/30 overflow-hidden">
+            <img src="Page24_Img5_1254x1254.jpg" alt="NODE 04 GAME Liquidity POOL" class="w-full h-44 object-cover" />
+            <div class="p-4">
+              <div class="flex justify-between items-center">
+                <span class="font-tech text-xs font-bold text-rose-400">NODE 04</span>
+                <span class="font-tech text-lg font-black text-white">20%</span>
+              </div>
+              <h4 class="font-bold text-white mt-1">GAME Liquidity POOL</h4>
+              <p class="text-xs text-slate-400 mt-1">표기: CASINO POOL · 게임·카지노 유동성</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 모바일 대시보드 프리뷰 이미지 -->
+        <div class="rounded-xl overflow-hidden border border-slate-800">
+          <img src="Page25_Img1_1916x821.jpg" alt="Hyper LP Node Pool Dashboard" class="w-full h-auto object-cover" />
+        </div>
+        <p class="text-[11px] text-slate-500 mt-3">
+          * 20%·30%·30%·20%는 대시보드의 Volume 표기값이며 확정 수익률이나 배분율이 아닙니다. 화면 속 외부 브랜드 표기는 공식 제휴·보증을 의미하지 않습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 05: 보상 체계 (REWARDS) -->
+  <section id="rewards" class="py-24 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-14">
+        <span class="font-tech text-xs tracking-widest text-cyan-400 uppercase">CHAPTER 05 · REWARDS</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Hyper Pool 패키지와 보상 체계</h2>
+        <p class="text-slate-400 mt-3 max-w-3xl">
+          풀 보너스·추천 매칭 보너스·레벨 보너스, 그리고 지급 조건과 유의사항까지 한눈에 정리했습니다.
+        </p>
+      </div>
+
+      <!-- 1. 8종 패키지별 풀 보너스 (차트 이미지 포함) -->
+      <div class="glass-panel rounded-2xl p-8 mb-10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <span class="font-tech text-xs text-cyan-400 font-bold">01 · HYPER POOL PACKAGE</span>
+            <h3 class="text-xl font-bold text-white mt-1">패키지별 풀 보너스 (Pool Bonus)</h3>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">지급 주기: <strong class="text-white">주 5일</strong></span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">최대 지급률: <strong class="text-amber-400">250%</strong></span>
+            <span class="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-300">지급 비율: <strong class="text-cyan-400">80 : 20</strong></span>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-slate-800 mb-6">
+          <img src="Page27_Img1_1916x821.jpg" alt="패키지별 풀 보너스 차트" class="w-full h-auto object-cover" />
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3">
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$100</div>
+            <div class="font-tech font-black text-cyan-400 text-base mt-1">0.5%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$500</div>
+            <div class="font-tech font-black text-cyan-400 text-base mt-1">0.5%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$1,000</div>
+            <div class="font-tech font-black text-cyan-400 text-base mt-1">0.5%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$3,000</div>
+            <div class="font-tech font-black text-cyan-300 text-base mt-1">0.6%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$10,000</div>
+            <div class="font-tech font-black text-blue-400 text-base mt-1">0.7%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$30,000</div>
+            <div class="font-tech font-black text-indigo-400 text-base mt-1">0.8%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#070d1f] border border-slate-800 text-center">
+            <div class="font-tech font-bold text-white text-sm">$50,000</div>
+            <div class="font-tech font-black text-amber-400 text-base mt-1">0.9%</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-rose-950/40 border border-rose-500/40 text-center">
+            <div class="font-tech font-bold text-white text-sm">$100,000</div>
+            <div class="font-tech font-black text-rose-400 text-base mt-1">1.0%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 추천 매칭 보너스 & 레벨 보너스 (이미지 포함) -->
+      <div class="grid lg:grid-cols-12 gap-8 mb-10">
+        <!-- 추천 매칭 -->
+        <div class="lg:col-span-5 glass-panel rounded-2xl overflow-hidden">
+          <img src="Page28_Img3_1254x1254.jpg" alt="Referral Matching" class="w-full h-48 object-cover" />
+          <div class="p-8">
+            <span class="font-tech text-xs text-rose-400 font-bold">02 · REFERRAL MATCHING</span>
+            <h3 class="text-xl font-bold text-white mt-1 mb-4">풀 보너스 기준 추천 매칭</h3>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-rose-500/30">
+                <div><div class="font-bold text-white text-sm">1대 (직접 추천)</div></div>
+                <span class="font-tech text-xl font-black text-rose-400">10%</span>
+              </div>
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-cyan-500/30">
+                <div><div class="font-bold text-white text-sm">2대 ~ 6대 (구간 내 각 단계)</div></div>
+                <span class="font-tech text-xl font-black text-cyan-400">각 2%</span>
+              </div>
+              <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/90 border border-blue-500/30">
+                <div><div class="font-bold text-white text-sm">7대 ~ 16대 (구간 내 각 단계)</div></div>
+                <span class="font-tech text-xl font-black text-blue-400">각 1%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 레벨 보너스 -->
+        <div class="lg:col-span-7 glass-panel rounded-2xl overflow-hidden">
+          <img src="Page28_Img4_1300x867.jpg" alt="Level Bonus V1-V7" class="w-full h-48 object-cover" />
+          <div class="p-8">
+            <span class="font-tech text-xs text-amber-400 font-bold">03 · LEVEL BONUS</span>
+            <h3 class="text-xl font-bold text-white mt-1 mb-2">소실적 활성 POOL 기준 레벨 보너스</h3>
+            <p class="text-xs text-slate-400 mb-4">글로벌 풀 보너스의 <strong class="text-amber-300">5% (1/N) 전 레벨 공통·중복 지급</strong></p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 text-center">
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-cyan-400 text-xs">V1</div>
+                <div class="font-bold text-white text-sm mt-1">$10K</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-cyan-400 text-xs">V2</div>
+                <div class="font-bold text-white text-sm mt-1">$30K</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-blue-400 text-xs">V3</div>
+                <div class="font-bold text-white text-sm mt-1">$100K</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-blue-400 text-xs">V4</div>
+                <div class="font-bold text-white text-sm mt-1">$300K</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-indigo-400 text-xs">V5</div>
+                <div class="font-bold text-white text-sm mt-1">$1M</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900 border border-slate-800">
+                <div class="font-tech font-bold text-amber-400 text-xs">V6</div>
+                <div class="font-bold text-white text-sm mt-1">$3M</div>
+              </div>
+              <div class="p-3 rounded-xl bg-rose-950/40 border border-rose-500/40 col-span-2 sm:col-span-1">
+                <div class="font-tech font-bold text-rose-400 text-xs">V7</div>
+                <div class="font-bold text-white text-sm mt-1">$10M</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 지급 조건과 비용 6대 기준 -->
+      <div class="glass-panel rounded-2xl p-8">
+        <span class="font-tech text-xs text-cyan-400 font-bold">04 · PAYOUT RULES</span>
+        <h3 class="text-xl font-bold text-white mt-1 mb-6">지급 조건과 비용</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">01 · 풀 보너스 지급</div>
+            <div class="text-lg font-bold text-white mt-1">주 5일</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">02 · 보너스 최대 지급률</div>
+            <div class="text-lg font-bold text-amber-400 mt-1">250%</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">03 · Hyper coin : token</div>
+            <div class="text-lg font-bold text-cyan-400 mt-1">80 : 20</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">04 · 출금 단위</div>
+            <div class="text-lg font-bold text-white mt-1">$50</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">05 · 출금 수수료</div>
+            <div class="text-lg font-bold text-white mt-1">5%</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+            <div class="text-[11px] text-slate-400">06 · 센터비</div>
+            <div class="text-lg font-bold text-white mt-1">3%</div>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-500 mt-4">
+          * 250%는 원문상의 최대 지급률 표기이며, 원금 보장·확정 수익·수익 실현 기간을 의미하지 않습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 투자 유의사항 (DISCLAIMER) -->
+  <section id="disclaimer" class="py-20 bg-[#040814] border-t border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-panel rounded-2xl overflow-hidden border-amber-500/30">
+        <div class="grid lg:grid-cols-12">
+          <div class="lg:col-span-4">
+            <img src="Page30_Img1_1040x1300.jpg" alt="Disclaimer Risk Review" class="w-full h-full object-cover min-h-[260px]" />
+          </div>
+          <div class="lg:col-span-8 p-8 sm:p-10 flex flex-col justify-between">
+            <div>
+              <span class="font-tech text-xs text-amber-400 tracking-wider">DISCLAIMER</span>
+              <h2 class="text-2xl font-bold text-white mt-1 mb-6">투자 유의사항</h2>
+              <ul class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed mb-8">
+                <li><strong class="text-amber-300">01.</strong> 본 자료는 사업 설명을 위한 것이며, 투자 권유나 수익 보장을 의미하지 않습니다.</li>
+                <li><strong class="text-amber-300">02.</strong> 디지털 자산은 가격 변동성이 크며, 투자 원금의 일부 또는 전부를 잃을 수 있습니다.</li>
+                <li><strong class="text-amber-300">03.</strong> 보너스율·지급 조건·수수료는 회사 정책과 시장 상황에 따라 변경될 수 있습니다.</li>
+                <li><strong class="text-amber-300">04.</strong> 연계 플랫폼(DEX·거래소·FX·게임)의 운영 상황에 따라 수익이 달라질 수 있습니다.</li>
+                <li><strong class="text-amber-300">05.</strong> 참여 전 거주 국가의 가상자산·금융 관련 법령과 규제를 반드시 확인하시기 바랍니다.</li>
+              </ul>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3 pt-6 border-t border-slate-800 text-xs">
+              <div class="p-3.5 rounded-xl bg-slate-900/70">
+                <strong class="text-white">운영 주체와 범위:</strong> 운영 서비스·계약 상대방·관할·인허가
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/70">
+                <strong class="text-white">자금 보관과 사용:</strong> 수탁 여부·자금 사용처·회수 조건
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/70">
+                <strong class="text-white">수익·비용·정산:</strong> 순손익·지급 재원·비용·계산 기준
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-900/70">
+                <strong class="text-white">핵심 위험과 제한:</strong> 가격·유동성·운영·기술·상대방 위험
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER & CONTACT -->
+  <footer id="contact" class="py-16 border-t border-slate-800 bg-[#030610]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-12 border-b border-slate-800/80">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <img src="Page01_Img1_476x505.png" alt="HYPER Logo" class="w-9 h-9 object-contain rounded-lg" onerror="this.style.display='none'" />
+            <span class="font-tech font-bold text-xl text-white">METASOFTHUB LIMITED</span>
+          </div>
+          <p class="text-sm text-slate-400 max-w-md">
+            기술과 유동성, 사용처를 연결하는 Hyper LP.<br />
+            플랫폼 개발 역량을 기반으로 유동성과 디지털 서비스의 연결을 설계합니다.
+          </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 text-sm">
+          <div class="glass-panel rounded-xl px-6 py-4">
+            <div class="font-tech text-[11px] text-cyan-400">WEBSITE</div>
+            <div class="font-bold text-white mt-1">https://metasofthub.com</div>
+          </div>
+          <div class="glass-panel rounded-xl px-6 py-4">
+            <div class="font-tech text-[11px] text-amber-400">CONTACT</div>
+            <div class="font-bold text-white mt-1">contact@metasofthub.com</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 METASOFTHUB LIMITED. All Rights Reserved.</p>
+        <p>10 자체 개발 분야 · 4 LP 사업 분야 · 2 참여 방식</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 인터랙티브 스크립트 -->
+  <script>
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.portfolio-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-cyan-500', 'text-slate-950');
+          b.classList.add('bg-slate-800', 'text-slate-300');
+        });
+        btn.classList.remove('bg-slate-800', 'text-slate-300');
+        btn.classList.add('bg-cyan-500', 'text-slate-950');
+
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? 'block' : 'none';
+        });
+      });
+    });
+  </script>
 </body>
 </html>
